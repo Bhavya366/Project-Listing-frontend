@@ -5,6 +5,7 @@ import axios from 'axios';
 import ModalBody from '../ModalBody';
 import { MyContext } from '../../MyContext';
 import { useContext } from 'react';
+import baseUrl from '../../constants/base'
 
 const ProductForm = ({ setAuth ,id }) => {
     const navigate = useNavigate();
@@ -16,7 +17,7 @@ const ProductForm = ({ setAuth ,id }) => {
         const headers = {token : JSON.parse(localStorage.getItem('token'))}
         if(id){
             data.id = id
-            axios.put("http://localhost:4500/update-product",data,{headers:headers})
+            axios.put(`${baseUrl}/update-product`,data,{headers:headers})
             .then((res)=>{
                     setText(false)            
             })
@@ -24,7 +25,7 @@ const ProductForm = ({ setAuth ,id }) => {
         }
         else{
             axios
-          .post("http://localhost:4500/add-product",data, {
+          .post(`${baseUrl}/add-product`,data, {
             headers: headers
           })
           .then((res) => {

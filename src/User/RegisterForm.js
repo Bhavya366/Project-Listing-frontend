@@ -9,6 +9,7 @@ import axios from 'axios';
 import LoginForm from './LoginForm';
 import { useContext } from 'react';
 import { MyContext } from '../MyContext';
+import baseUrl from '../constants/base';
 
 const RegisterForm = (props) => {
     
@@ -20,7 +21,7 @@ const RegisterForm = (props) => {
 
     const onSubmit = (data) => {
         axios
-            .post("http://localhost:4500/register", data)
+            .post(`${baseUrl}/register`, data)
             .then((res) => {
                 
                 localStorage.setItem('token', JSON.stringify(res.data.token));

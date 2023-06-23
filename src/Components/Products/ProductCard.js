@@ -7,6 +7,7 @@ import axios from 'axios';
 import ModalBody from '../ModalBody';
 import ProductForm from './ProductForm';
 import FeedbackProduct from '../FeedbackProduct';
+import baseUrl from '../../constants/base';
 
 const ProductCard = ({ product,isAuthenticated }) => {
     
@@ -29,7 +30,7 @@ const ProductCard = ({ product,isAuthenticated }) => {
             nameofthecompany: nameofthecompany,
             comment: event.target[0].value,
         }
-        axios.put('http://localhost:4500/comment',data)
+        axios.put(`${baseUrl}/comment`,data)
         .then((res)=>{setComments(res.data.comments)})
         .catch((err)=>{console.log(err)})
     }
@@ -66,7 +67,7 @@ const ProductCard = ({ product,isAuthenticated }) => {
                     <div className='upvote-count'>
                         <button onClick={()=>{
                             setUpvotes(upvotes=>upvotes+1)
-                            axios.put('http://localhost:4500/upvote',{
+                            axios.put(`${baseUrl}/upvote`,{
                                 nameofthecompany:product.nameofthecompany,
                                 upvote:upvotes,
                         }).then((res)=>{product.upvote = res.data.upvote})

@@ -6,6 +6,7 @@ import password from '../Images/password.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { MyContext } from '../MyContext';
 import { useContext } from 'react';
+import baseUrl from '../constants/base';
 
 const LoginForm = ({setAuth,show}) => {
 
@@ -18,7 +19,7 @@ const LoginForm = ({setAuth,show}) => {
   const onSubmit = (data) => {
     
     axios
-      .post("http://localhost:4500/login",data)
+      .post(`${baseUrl}/login`,data)
       .then((res)=>{
         // setAuth(true);
         if(res.data.error)

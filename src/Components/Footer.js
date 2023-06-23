@@ -4,7 +4,7 @@ import axios from 'axios';
 import ProductCard from './Products/ProductCard';
 import {useContext} from 'react'
 import { MyContext } from '../MyContext';
-import { Link } from 'react-router-dom';
+import baseUrl from '../constants/base'
 
 
 const Footer = ({ user, isAuthenticated }) => {
@@ -18,11 +18,11 @@ const Footer = ({ user, isAuthenticated }) => {
     const [selectedCategory,setSelectedCategory] = useState("All")
     
     useEffect(()=>{
-        axios.get("http://localhost:4500/get-all-categories")
+        axios.get(`${baseUrl}/get-all-categories`)
         .then((response) => { setCategories(response.data.categories)  })
         .catch((err) => { console.log("Error occuer while proccessing data") })  
 
-        axios.get(`http://localhost:4500/?category=${selectedCategory}`)
+        axios.get(`${baseUrl}/?category=${selectedCategory}`)
         .then((response)=>{
             setProducts(response.data.product)
         })
@@ -31,7 +31,7 @@ const Footer = ({ user, isAuthenticated }) => {
     
     const updateSort = (sort_name)=>{
         console.log(sort_name)
-        axios.get(`http://localhost:4500/?category=${selectedCategory}&&sort=${sort_name}`)
+        axios.get(`${baseUrl}/?category=${selectedCategory}&&sort=${sort_name}`)
         .then((response)=>{
             console.log(products)
             setProducts(response.data.product)

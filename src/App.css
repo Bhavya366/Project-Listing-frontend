@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    font-family: sans-serif;
+    max-width: 100%;
+}
+.error{
+    color: red;
+    font-size: 12px;
+}
+.login-register-page {
+    background-color: #262e40;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.login-register-page .feedback {
+    color: white;
+
+    @media (max-width: 700px) {
+        margin: 0% 10%
+    }
+}
+
+.login-page {
+    background-color: white;
+    border-radius: 8px;
+    padding: 40px 30px;
+    width: 30%;
+    height: max-content;
+
+    @media (max-width: 700px) {
+        width: 60%;
+        padding: 40px 20px;
+    }
+}
+
+.login-page .button {
+    background-color: #36416A;
+    color: white;
+    border-radius: 50px;
+    border: none;
+    padding: 8px 20px;
+    float: right;
+}
+
+.login-page img {
+    height: 15px;
+    width: 15px;
+    position: absolute;
+}
+
+.login-page p {
+    font-size: 12px;
+}
+
+.login-page .input {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid #AAAAAA;
+    outline: none;
+    width: 85%;
+}
+
+.have-acc {
+    color: #737373
+}
+
+/* Main page */
+.navbar {
+    background-color: #36416A;
+    color: white;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2%;
+    @media (max-width: 700px) {
+        width:100%
+    }
+}
+
+button {
+    background-color: #36416A;
+    color: white;
+    border: none;
+    padding: 8px 13px;
+    border-radius: 50px;
+}
+
+.navbar .btn-signup {
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 6px 11px
+}
+
+.navbar .log-out-btns {
+    display: flex;
+    align-items: center;
+}
+
+.navbar button {
+    font-size: medium;
+}
+
+.banner {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 3% 14%;
+
+    @media (max-width: 700px) {
+        flex-direction: column;
+        padding: 0
+    }
+}
+
+.banner img {
+    width: 80%;
+    height: 50%;
+
+    @media (max-width: 700px) {
+        width: 100%
+    }
+}
+
+.banner h1 {
+    line-height: 1.5;
+
+    @media (max-width: 700px) {
+        line-height: 1;
+        font-size: medium;
+    }
+}
+
+.banner p {
+    line-height: 2;
+
+    @media (max-width: 700px) {
+        line-height: 1;
+        font-size: small;
+    }
+}
+
+.banner .feedback-part {
+    @media (max-width: 700px) {
+        width: 90%;
+        line-height: 1;
+    }
+}

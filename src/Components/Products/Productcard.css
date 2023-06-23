@@ -1,0 +1,259 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 3%;
+
+    @media (max-width: 700px) {
+        flex-direction: column;
+    }
+}
+
+.apply-filter {
+    background-color: #36416A;
+    padding: 20% 6% 10% 10%;
+    border: 2px solid white;
+    color: white;
+    border-radius: 8px;
+
+    @media (max-width: 700px) {
+        display: none;
+    }
+}
+
+.filter-heading {
+    display: none;
+    @media (max-width: 700px) {
+        display: contents;
+        color: #8B8B8B;
+    }
+}
+
+.footer .categories-list {
+    width: 22%;
+
+    @media (max-width: 700px) {
+        width: 100%;
+    }
+}
+
+.categories-box {
+    background: #ffffff;
+  box-shadow: 0px 0px 17.5051px rgba(0, 0, 0, 0.15);
+  border-radius: 11.3783px;
+  bottom: 12rem;
+  padding: 2%;
+  @media (max-width: 700px) {
+    width: 100%;
+    box-shadow: none;
+    }
+}
+.categories-box button {
+    background:  rgba(54, 65, 106, 0.15);
+    border-radius: 25px;
+    padding: 0.7rem 1.8rem;
+    margin: 0.3rem;
+    color: black;
+    border: none;
+  }
+  
+  .categories-box button:hover {
+    cursor: pointer;
+  }
+  
+  .categories-box .selected {
+    background-color: #36416a;
+    color:white
+  }
+
+.footer .add-product-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #5f6783;
+    border-radius: 6px;
+    width: 70vw;
+    padding: 1%;
+
+    @media (max-width: 700px) {
+        width: 95vh;
+        margin-top: 7%;
+    }
+}
+
+.footer .add-product-box .sort {
+    display: inline-flex;
+    width: 40%;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: 700px) {
+        width: 53%;
+    }
+}
+
+.product-description {
+    font-size: 13px;
+}
+
+.product-card-category {
+    background-color: #C0CEFF;
+    border-radius: 20px;
+    font-size: 14px;
+    padding: 2% 5%;
+    margin-right: 4%;
+}
+
+.product-card {
+    background-color: rgba(54, 65, 106, 0.15);
+    border-radius: 4px;
+    width: 98%;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.product-des {
+    line-height: 2;
+}
+
+.product-img img {
+    height: 50px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.product-card .product-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.options-sort {
+    border: none
+}
+
+.options-sort option {
+    height: 40px;
+    background-color: #5f6783;
+}
+
+.card-left {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    line-height: 1.5;
+}
+
+.comment-btn {
+    color: #ABABAB;
+    cursor: default;
+}
+
+.comment-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:56vw;
+}
+
+.comment-section img {
+    width: 18px;
+    height: 18px
+}
+.comment-btn-section{
+    display: flex;
+    align-items: center;
+}
+.product-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 1rem;
+}
+
+
+.card-right {
+    flex-direction: column;
+}
+.comments-count{
+    display: flex;
+    align-items: center;
+}
+.card-right img {
+    width: 15px;
+    height: 15px
+}
+
+.upvote-count button{
+    background: #C7CBD6;
+    color: black;
+    border-radius: 15px;
+    padding: 0.6rem 0.1rem;
+    width: 40px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+.input-box-with-img {
+    background: #FFFFFF;
+    border: 3px solid #C7CBD6;
+    border-radius: 43px;
+    margin: 0% 1%;
+}
+
+.input_box {
+    display: flex;
+    padding: 0% 1%;
+}
+
+.input_box input {
+    width: 100%;
+    border: none;
+    border-radius: 50px;
+}
+
+.commentsend-btn {
+    border: none;
+    background-color: white;
+}
+.edit-btn{
+    padding:0.5rem 1.2rem;
+    @media (max-width: 700px) {
+        margin-left: 50px;
+    }
+}
+
+.input_box img {
+    width: 20px;
+    height: 20px
+}
+
+.scrollable-div {
+    padding: 2% 6%;
+    max-width: 65vw;
+    height: 60px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    @media (max-width: 700px) {
+        width: 86vw
+    }
+}
+
+.each-comment-scrollable {
+    display: flex;
+    color: #999999;
+    font-size: 14px;
+}
+
+.each-comment-scrollable span {
+    background-color: #36416A;
+    border-radius: 50%;
+    height: 15px;
+    width: 30px;
+    margin-right: 3%;
+    /* @media (max-width: 700px) {
+        height: 1rem;
+        width: 3rem;
+    } */
+}

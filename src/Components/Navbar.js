@@ -4,7 +4,7 @@ import profile from '../Images/profile.png'
 import { useContext } from 'react';
 import { MyContext } from '../MyContext';
 
-const Navbar = ({ isAuthenticated, user }) => {
+const Navbar = () => {
 
     const { text, loggedIn,setText,setLoggedIn } = useContext(MyContext)
     

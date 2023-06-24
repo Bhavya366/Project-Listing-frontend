@@ -106,27 +106,27 @@
 .product-card {
     background-color: rgba(54, 65, 106, 0.15);
     border-radius: 4px;
-    width: 98%;
+    width: 100%;
     margin-bottom: 1rem;
     padding: 1rem;
 }
-
 .product-des {
     line-height: 2;
+    width: 80%;    
 }
-
+.product-img{
+    width:8%
+}
 .product-img img {
     height: 50px;
     width: 100px;
     border-radius: 50%;
 }
-
 .product-card .product-details {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-
 .options-sort {
     border: none
 }
@@ -148,22 +148,31 @@
 .comment-btn {
     color: #ABABAB;
     cursor: default;
+    @media (max-width: 700px) {
+       display: none;
+    }
 }
 
 .comment-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width:56vw;
 }
-
-.comment-section img {
-    width: 18px;
-    height: 18px
+.comment-section .filtered-categories{
+    display: flex;
+    align-items: center;
 }
 .comment-btn-section{
     display: flex;
     align-items: center;
+}
+.comment-btn-section img{
+    width: 18px;
+    height: 18px;
+    @media (max-width: 700px) {
+        width:5vw;
+        height:5vw;
+    }
 }
 .product-img {
     width: 40px;
@@ -178,19 +187,19 @@
 .comments-count{
     display: flex;
     align-items: center;
+    float: left;
+    justify-content: space-between;
 }
 .card-right img {
     width: 15px;
     height: 15px
 }
-
 .upvote-count button{
     background: #C7CBD6;
     color: black;
     border-radius: 15px;
     padding: 0.6rem 0.1rem;
     width: 40px;
-    text-align: center;
     margin-bottom: 20px;
 }
 

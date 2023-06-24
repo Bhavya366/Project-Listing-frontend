@@ -12,16 +12,15 @@ const App = () => {
   const [text,setText] = useState(false);
   const [loggedIn,setLoggedIn] = useState(false);
   const [show,setShow] = useState(false);
-  localStorage.setItem('edit',false)
-  const [isAuthenticated ,setAuth]=useState(false)
+  const [edit,setEdit] = useState(0);
 
   return (
     <>
-    <MyContext.Provider value = {{text,loggedIn,setText,setLoggedIn,show,setShow}} >
+    <MyContext.Provider value = {{text,loggedIn,setText,setLoggedIn,show,setShow,edit,setEdit}} >
     <Routes>      
-      <Route path="/" element={<MainPage  isAuthenticated={isAuthenticated}  />} />
-      <Route path="/register" element={<Register setAuth={setAuth} />}/>
-      <Route path="/login" element={<Login setAuth={setAuth}  />}/>
+      <Route path="/" element={<MainPage />} />
+      <Route path="/register" element={<Register  />}/>
+      <Route path="/login" element={<Login />}/>
     </Routes>
     </MyContext.Provider>
     </>

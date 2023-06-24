@@ -4,37 +4,35 @@ import comment from '../../Images/comment.png'
 import sortbycomments from '../../Images/sortbycomments.png'
 import commentsend from '../../Images/commentsend.png'
 import axios from 'axios';
-import ModalBody from '../ModalBody';
 import ProductForm from './ProductForm';
 import FeedbackProduct from '../FeedbackProduct';
 import baseUrl from '../../constants/base';
+import { useContext } from 'react'
+import { MyContext } from '../../MyContext'
 
-const ProductCard = ({ product,isAuthenticated }) => {
+const ProductCard = ({ product }) => {
+    const { text, loggedIn, setText, setLoggedIn, edit, setEdit } = useContext(MyContext)
+    const [upvotes, setUpvotes] = useState(product.upvote);
+    const [comments, setComments] = useState(product.comments);
     
-    const [upvotes,setUpvotes] = useState(product.upvote);
-    const [comments,setComments] = useState(product.comments);
-    const [edit,setEdit] = useState(false)
-    
+
     const [show, setShow] = useState(false);
     const addComment = () => {
         setShow(true)
     }
     const storeComment = (event, nameofthecompany) => {
         event.preventDefault();
-        var oldComments = comments
-        var newComments = event.target[0].value;
-        oldComments.unshift(newComments);
-
-        console.log(oldComments);
         const data = {
             nameofthecompany: nameofthecompany,
             comment: event.target[0].value,
         }
-        axios.put(`${baseUrl}/comment`,data)
-        .then((res)=>{setComments(res.data.comments)})
-        .catch((err)=>{console.log(err)})
+        if(event.target[0].value!=""){
+        axios.put(`${baseUrl}/comment`, data)
+            .then((res) => { setComments(res.data.comments) })
+            .catch((err) => { console.log(err) })
+        }
     }
-    
+
     return (
         <div className="product-card selected-card">
             <div className='product-details'>
@@ -50,31 +48,32 @@ const ProductCard = ({ product,isAuthenticated }) => {
                             <p>{product.adddescription}</p>
                         </div>
                         <div className='comment-section'>
-                            <div style={{display:"flex"}}>
+                            <div className='filtered-categories'>
                                 {product.category.map((eachCategory, index) => {
-                                return (<span key={index} className='product-card-category'>{eachCategory}</span>)
-                            })} &nbsp;&nbsp;
-                            <div className='comment-btn-section'>
-                                <img src={comment} alt="" />&nbsp;
-                                <p className='comment-btn' onClick={() => addComment()}>Comment</p>
+                                    return (<span key={index} className='product-card-category'>{eachCategory}</span>)
+                                })} &nbsp;&nbsp;
+                                
+                                <div className='comment-btn-section' onClick={() => addComment()}>
+                                    <img src={comment} alt="" />&nbsp;
+                                    <p className='comment-btn' >Comment</p>
+                                </div> 
                             </div>
-                        </div>
-                        <div>{isAuthenticated? <button className='edit-btn' onClick={()=>{setEdit(true)}}>Edit</button>:""}</div>
+                            {loggedIn ? <button className='edit-btn' onClick={() => { setEdit(product._id) }}>Edit</button> : ""}                          
                         </div>
                     </div>
                 </div>
                 <div className="card-right">
                     <div className='upvote-count'>
-                        <button onClick={()=>{
-                            setUpvotes(upvotes=>upvotes+1)
-                            axios.put(`${baseUrl}/upvote`,{
-                                nameofthecompany:product.nameofthecompany,
-                                upvote:upvotes,
-                        }).then((res)=>{product.upvote = res.data.upvote})
-                    }}>^<br></br>{product.upvote}</button>
+                        <button onClick={() => {
+                            setUpvotes(upvotes => upvotes + 1)
+                            axios.put(`${baseUrl}/upvote`, {
+                                nameofthecompany: product.nameofthecompany,
+                                upvote: upvotes,
+                            }).then((res) => { product.upvote = res.data.upvote })
+                        }}>^<br></br>{product.upvote}</button>
                     </div>
                     <div className='comments-count'>
-                        <span>{product.comments.length}</span>&nbsp;<img src={sortbycomments} alt="" />
+                        <div className='comments'><span>{product.comments.length}</span>&nbsp;<img src={sortbycomments} alt="" /></div>
                     </div>
                 </div>
             </div><br></br>
@@ -89,7 +88,7 @@ const ProductCard = ({ product,isAuthenticated }) => {
                 </div>
                 : ""}<br></br>
             {show && product.comments ? <div>
-                {product.comments ?
+                {product.comments?
                     <div className='scrollable-div'>{comments.map((eachComment, index) => {
                         return (
                             <div className='each-comment-scrollable' key={index}>
@@ -98,17 +97,18 @@ const ProductCard = ({ product,isAuthenticated }) => {
                             </div>
                         )
                     })}<br></br>
-            </div> : ""}</div> : ""}
-            {edit?<div className='pop-up-background'>
-                    <div  className='pop-up' >
-                            <div className='form-fr-add-product'>
-                                <ProductForm id={product._id} />
-                            </div>
-                            <div className='feedback-form'>
-                                <FeedbackProduct />
-                            </div>
+                    </div> : ""}</div> : ""}
+
+            {edit!=0 ? <div className='pop-up-background'>
+                <div className='pop-up' >
+                    <div className='form-fr-add-product'>
+                        <ProductForm id={edit} />
                     </div>
-                </div>:"" }
+                    <div className='feedback-form'>
+                        <FeedbackProduct />
+                    </div>
+                </div>
+            </div> : ""}
         </div>
     );
 };

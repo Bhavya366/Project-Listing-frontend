@@ -4,13 +4,13 @@ import '../App.css'
 import RegisterForm from './RegisterForm';
 
 
-const Register = ({setUser,setAuth}) => {
+const Register = () => {
 
     return (
         <div className='login-register-page'>
             <div><Feedback/></div><br></br>
             <div className='login-page'>
-                <RegisterForm  setUser={setUser} setAuth={setAuth}/>
+                <RegisterForm />
             </div>
         </div>
     );

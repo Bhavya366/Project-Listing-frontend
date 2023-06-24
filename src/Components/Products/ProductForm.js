@@ -1,25 +1,26 @@
-import {React} from 'react';
+import {React,useState,useEffect} from 'react';
 import { useForm } from "react-hook-form"
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import ModalBody from '../ModalBody';
 import { MyContext } from '../../MyContext';
 import { useContext } from 'react';
 import baseUrl from '../../constants/base'
 
-const ProductForm = ({ setAuth ,id }) => {
-    const navigate = useNavigate();
-    const { register, handleSubmit, formState: { errors } } = useForm()
-    const { text,loggedIn,setText,setLoggedIn } = useContext(MyContext);
+const ProductForm = ({ id }) => {
 
+    const { register, handleSubmit, formState: { errors } } = useForm()
+    const { text,loggedIn,setText,setLoggedIn,edit,setEdit } = useContext(MyContext);
+    
     const onSubmit = (data) => {
         data.upvote = 0
         const headers = {token : JSON.parse(localStorage.getItem('token'))}
-        if(id){
-            data.id = id
+        // if we want to edit since we are passing id while edit option in product card it will search id in backend
+        if(edit){
+            data.id = id;
             axios.put(`${baseUrl}/update-product`,data,{headers:headers})
             .then((res)=>{
-                    setText(false)            
+                console.log(res);
+                setText(false)  
+                setEdit(false)          
             })
             .catch((err)=>{console.log(err)})
         }
@@ -50,7 +51,7 @@ const ProductForm = ({ setAuth ,id }) => {
                     <input {...register("addlogourl")} type="text" placeholder='Add logo url' required />
                 </div><br></br>
                 <div className='input'>
-                    <input {...register("linkofproduct")} type="text" placeholder='Link of product' required />
+                    <input {...register("linkofproduct")} type="text" placeholder='Link of product' required  />
                 </div><br></br>
                 <div className='input'>
                     <input {...register("adddescription")} type="text" placeholder='Add description' required />

@@ -8,7 +8,7 @@ import LoginForm from '../User/LoginForm'
 import FeedbackProduct from './FeedbackProduct';
 import './Modal.css';
 
-const ModalBody = ({id}) => {
+const ModalBody = () => {
 
     const { text, loggedIn,setText,setLoggedIn,show,setShow } = useContext(MyContext);
 
@@ -35,7 +35,6 @@ const ModalBody = ({id}) => {
                                 <><h3>Add your product </h3><br></br><ProductForm  /></>
                                      
                               )}
-                              {loggedIn && JSON.parse(localStorage.getItem('edit')) ? <ProductForm id={id} />:""}
             </div>
             <div className='feedback-form'>
                 <FeedbackProduct />

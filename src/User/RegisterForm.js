@@ -23,7 +23,7 @@ const RegisterForm = (props) => {
         axios
             .post(`${baseUrl}/register`, data)
             .then((res) => {
-                
+                console.log(res.data)
                 localStorage.setItem('token', JSON.stringify(res.data.token));
                 setLoggedIn(true)
                 setText(false)
@@ -51,7 +51,7 @@ const RegisterForm = (props) => {
                 </div><br></br>
                 <div className='input'>
                     <img src={mobile} alt="" />&nbsp;
-                    <input {...register("mobile")} type="tel" placeholder='Mobile' required />
+                    <input {...register("mobile")} placeholder='Mobile' type='text' required />
                 </div><br></br>
                 <div className='input'>
                     <img src={password} alt="" />&nbsp;
@@ -66,7 +66,6 @@ const RegisterForm = (props) => {
                 {!(props.para)&&(
                          <p className='have-acc'>Already have an account?&nbsp; <Link to='/login'>Log in</Link></p>)
                 }<br></br>
-                
                 {error?<p className='error'>{error}</p>:""}
 
                 <button>Sign Up</button>

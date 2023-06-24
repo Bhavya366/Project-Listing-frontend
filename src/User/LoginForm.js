@@ -8,7 +8,7 @@ import { MyContext } from '../MyContext';
 import { useContext } from 'react';
 import baseUrl from '../constants/base';
 
-const LoginForm = ({setAuth,show}) => {
+const LoginForm = () => {
 
   const navigate = useNavigate()
   const { text,loggedIn, setText,setLoggedIn } = useContext(MyContext);
@@ -21,10 +21,9 @@ const LoginForm = ({setAuth,show}) => {
     axios
       .post(`${baseUrl}/login`,data)
       .then((res)=>{
-        // setAuth(true);
+       
         if(res.data.error)
         setError("*"+res.data.error)
-        // localStorage.setItem('isLoggedIn',true)
         else{
           localStorage.setItem('token',JSON.stringify(res.data.token));
           setText(false)
@@ -35,6 +34,7 @@ const LoginForm = ({setAuth,show}) => {
       )
       .catch((err) => {
         console.log("error",err)
+        setError("*"+err.response.data.message)
       });
   };
   return (

@@ -1,5 +1,4 @@
 import { React, useState,useEffect } from 'react';
-import ModalBody from './ModalBody';
 import axios from 'axios';
 import ProductCard from './Products/ProductCard';
 import {useContext} from 'react'
@@ -7,12 +6,11 @@ import { MyContext } from '../MyContext';
 import baseUrl from '../constants/base'
 
 
-const Footer = ({ user, isAuthenticated }) => {
+const Footer = () => {
 
     const {text,loggedIn,setText,setLoggedIn} = useContext(MyContext)
     localStorage.setItem('popUp',false);
     
-    const [popUp, setPopUp] = useState(false);
     const [categories, setCategories] = useState([])
     const [products,setProducts] = useState([])
     const [selectedCategory,setSelectedCategory] = useState("All")
@@ -73,13 +71,13 @@ const Footer = ({ user, isAuthenticated }) => {
                     <div className="products" style={{ width: "100%" }}>
                         {products.length>0?products.map((product,index)=>{return(
                             <div key={index}>
-                                <ProductCard  product = {product} isAuthenticated ={isAuthenticated} />
+                                <ProductCard  product = {product} />
                             </div>
                         )}):""}
                     </div>
                 </div>
             </div>
-            {/* {popUp ?<div><ModalBody user={user} isAuthenticated={isAuthenticated} popUp={popUp} /></div>: ""} */}
+            
         </>
     );
 };

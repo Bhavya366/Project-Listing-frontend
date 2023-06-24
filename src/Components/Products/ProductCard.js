@@ -99,7 +99,8 @@ const ProductCard = ({ product }) => {
                     })}<br></br>
                     </div> : ""}</div> : ""}
 
-            {edit!=0 ? <div className='pop-up-background'>
+            {edit!=0 ? 
+            <div className='pop-up-background'>
                 <div className='pop-up' >
                     <div className='form-fr-add-product'>
                         <ProductForm id={edit} />

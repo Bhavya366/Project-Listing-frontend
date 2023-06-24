@@ -14,7 +14,7 @@ const Footer = () => {
     const [categories, setCategories] = useState([])
     const [products,setProducts] = useState([])
     const [selectedCategory,setSelectedCategory] = useState("All")
-    
+    //All categories was fetched based on selectedCategroy default it was all 
     useEffect(()=>{
         axios.get(`${baseUrl}/get-all-categories`)
         .then((response) => { setCategories(response.data.categories)  })
@@ -68,6 +68,7 @@ const Footer = () => {
                         </div>
                         <button onClick={()=>{setText(true)}} style={{ borderRadius: "5px" }}>+ Add Product</button>
                     </div><br></br>
+                    {/* Each Product will be called as Component by passing each product there we can display each product details and perform edit upvote comment functionalities their*/}
                     <div className="products" style={{ width: "100%" }}>
                         {products.length>0?products.map((product,index)=>{return(
                             <div key={index}>

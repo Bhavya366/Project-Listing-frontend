@@ -17,6 +17,7 @@ const App = () => {
   return (
     <>
     <MyContext.Provider value = {{text,loggedIn,setText,setLoggedIn,show,setShow,edit,setEdit}} >
+    {/* text is for displaying modal loggedIn will be true whenever the user is loggedIn and show is for showing contents and edit for edit option */}
     <Routes>      
       <Route path="/" element={<MainPage />} />
       <Route path="/register" element={<Register  />}/>
